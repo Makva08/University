@@ -1,0 +1,21 @@
+Circuit: * C:\Users\marim\OneDrive\Documents\LTspiceXVII\Zuu\Final.asc
+
+Direct Newton iteration for .op point succeeded.
+
+Date: Sun May 09 00:47:52 2021
+Total elapsed time: 0.095 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 2111
+traniter = 2105
+tranpoints = 1046
+accept = 1045
+rejected = 1
+matrix size = 13
+fillins = 0
+solver = Normal
+Matrix Compiler1: 674 bytes object code size  0.1/0.1/[0.0]
+Matrix Compiler2: 993 bytes object code size  0.1/0.1/[0.1]
+
