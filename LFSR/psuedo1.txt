@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+extern unsigned long lfsr32(unsigned long seed);
+
+int main() {
+	int i = 0; int j = 0;
+	int a, b, c, d;
+	unsigned long seed = 0x5AA5FF00u;
+	unsigned long new_bit;
+	unsigned long current = 0x5AA5FF00u;
+	unsigned long q = 0x5AA5FF00u;
+	unsigned long p;
+
+    printf("Values generated using C:\n");
+	for (i=0; i<30; ++i){
+		a = current >> 0;
+		a = a & 0x1;
+		b = current >> 2;
+		b = b & 0x1;	
+		c = current >> 6;
+		c = c & 0x1;	
+		d = current >> 7;
+		d = d & 0x1;
+		new_bit = a ^ b ^ c ^ d;
+		current = (current >> 1) | (new_bit << 31);
+		printf ("New Value: %u\n", current);
+		if (seed == current) break;
+	}
+	printf("Values generated using Assembly:\n");
+	
+	for (j=0; j<30; ++j){
+	    p = pseudo(q);
+	    printf ("New Value: %u\n", p);
+	    q = p;
+	}
+}
+

@@ -1,0 +1,37 @@
+.globl _pseudo
+_pseudo:
+
+pushl %ebp
+movl %esp, %ebp
+
+movl 8(%ebp), %ebx   
+andl $1, %ebx        #32th bit
+
+movl 8(%ebp), %ecx   
+shrl $2, %ecx	     
+andl $1, %ecx	     #30th bit
+
+movl 8(%ebp), %edi   
+shrl $6, %edi	     
+andl $1, %edi	     #26th bit
+
+movl 8(%ebp), %esi   
+shrl $7, %esi	     
+andl $1, %esi	     #25th bit
+
+xorl %ecx, %ebx
+xorl %edi, %ebx
+xorl %esi, %ebx
+
+sall $31, %ebx		#new bit shifted
+movl 8(%ebp), %eax   	
+
+shrl $1, %eax		#shift currebt value 
+orl %ebx, %eax		#insert new bit
+
+movl %ebp, %esp
+popl %ebp
+ret
+
+
+
