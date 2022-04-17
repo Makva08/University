@@ -1,0 +1,22 @@
+module tb_udc;
+
+reg clk;reg enable; reg up;
+wire [3:0] counter;
+
+
+
+    updowncounter uut (
+        .clk(clk), 
+        .enable(enable), 
+        .up(up), 
+        .counter(counter)
+    );
+
+	 always #5 clk <= !clk;
+	
+    initial begin
+        
+        enable = 0; up = 0; #300; up = 1; #300; enable = 1; up = 0; #100; enable = 0;  $finish;
+    end
+      
+endmodule 

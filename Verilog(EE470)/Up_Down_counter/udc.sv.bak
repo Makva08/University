@@ -1,0 +1,26 @@
+module updowncounter(
+    input clk,enable, up,
+	 output reg [3:0] counter=0);
+	 
+    
+     always @(posedge(clk)) begin
+	  
+        if(enable == 1)   
+		  
+            if(up == 1) //count up
+                if(counter == 15)
+                    counter <= 0;
+                else
+                    counter <= counter + 1;
+						  
+            else  //countdown
+                if(counter == 0)
+                    counter <= 15;
+                else
+                    counter <= counter - 1;
+			else
+				counter <= 0;
+			
+     end    
+    
+endmodule 
