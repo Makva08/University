@@ -1,5 +1,37 @@
 C function:
 
+int somefunction(int a, int b) 
+{ 
+int c; 
+c = 0; 
+if (a > b ) c = 1; 
+return(c); 
+} 
+
+Equivalent assembly language function:
+
+.global _SomeFunction 
+_SomeFunction:
+	pushl %ebp
+	movl %esp,%ebp
+
+	movl 8(%ebp),%ebx    
+      movl 12(%ebp),%edx 
+      xorl %eax, %eax    
+      cmpl %edx,%ebx    
+      jle End
+      movl $1, %eax
+
+ End: movl %ebp, %esp
+      popl %ebp
+      ret
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+C function:
+
 int countOnes(int number) 
 { 
      int a ; 
